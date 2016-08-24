@@ -11,6 +11,8 @@
 		"optimize-autoloader": true
 	},
 	"autoload": {
-		"classmap": ["src/Wrapper.php"]
+		"psr-4":{
+            "Nonce":"src"
+        }
 	}
 }
