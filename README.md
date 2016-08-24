@@ -2,8 +2,6 @@
 
 # Using WordPress Nonces in an object oriented way
 
-## Installation
-
 ## How to use
 
 Create nonce

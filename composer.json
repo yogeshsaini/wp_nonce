@@ -11,6 +11,6 @@
 		"optimize-autoloader": true
 	},
 	"autoload": {
-		"classmap": ["src/class-nonce-wrapper.php"]
+		"classmap": ["src/Wrapper.php"]
 	}
 }
