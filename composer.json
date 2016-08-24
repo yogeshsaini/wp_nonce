@@ -1,0 +1,16 @@
+{
+    "name": "wp_nonce_oops",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Daffodil Software Ltd",
+            "website": "http://daffodilsw.com  "
+        }
+    ],
+    "config": {
+		"optimize-autoloader": true
+	},
+	"autoload": {
+		"classmap": ["src/class-nonce-wrapper.php"]
+	}
+}
