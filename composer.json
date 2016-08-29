@@ -1,18 +1,16 @@
 {
-    "name": "wp_nonce_oops",
-    "license": "GPL-3.0+",
-    "authors": [
-        {
-            "name": "Daffodil Software Ltd",
-            "website": "http://daffodilsw.com  "
-        }
-    ],
-    "config": {
-		"optimize-autoloader": true
-	},
-	"autoload": {
-		"psr-4":{
-            "Nonce":"src"
-        }
-	}
+  "name": "wp-nonces",
+  "description": "WordPress Nonces functionality in an object-oriented way",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "Daffodil Software Ltd",
+      "website": "http://www.daffodilsw.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Nonces\\": "src"
+    }
+  }
 }

@@ -1,35 +1,48 @@
-# wp_nonce
+Wordpress Nonces in Object Oriented Way
+================================
 
-# Using WordPress Nonces in an object oriented way
+Composer package that gives WordPress Nonces functionality in an object-oriented way.
 
-## How to use
+Usage
+-----
 
-Create nonce
-```php
-	$nonce = \Nonce\Wrapper::wp_create_nonce();
+### Configure Nonce Defaults
+ 
+``` php
+use Nonces\Config;
+
+Config::setSalt($salt);
+Config::setUserId($userId);
+Config::setSessionToken($sessionToken);
 ```
 
-Verify nonce
-```php
-	$isValid = \Nonce\Wrapper::wp_verify_nonce($nonce);
+### Create Nonce
+
+``` php
+use Nonces\Nonce;
+
+$nonce = new Nonce('readme-action');
+$nonce->generate();
 ```
 
-Create nonce hidden input
-```php
-	\Nonce\Wrapper::wp_nonce_field();
+### Verify Nonce
+
+``` php
+use Nonces\Verifer;
+
+$verifier = new Verifier();
+$verifier->verify($nonce, $action);
 ```
 
-Generate nonce URL:
-```php
-	$url = \Nonce\Wrapper::wp_nonce_url('http://www.google.com');
-```
+### Override global configuration per Nonce
 
-Check if request was been referred from an admin screen:
-```php
-	$admin = \Nonce\Wrapper::check_admin_referer();
-```
+``` php
+$nonce = new Nonce('Action', $myConfig);
+$verifier = new Verifier($myConfig);
 
-Verifies the AJAX request to prevent processing requests external of the blog.
-```php
-	$ajax = \Nonce\Wrapper::check_ajax_referer();
+$nonce->setLifespan(172800);
+$nonce->setAlgorithm('sha256');
+$nonce->setSalt($salt);
+$nonce->setUserId($userId);
+$nonce->setSessionToken($sessionToken);
 ```
