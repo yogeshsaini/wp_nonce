@@ -61,9 +61,19 @@ class Nonce implements NonceInterface, ConfigurableInterface
      *
      * @return hash generated string
      */
-    public function generate()
+    public function generate($action = -1)
     {
-        return $this->hash($this->data());
+        $user = wp_get_current_user();
+        $uid = (int) $user->ID;
+        if ( ! $uid ) {
+            /** This filter is documented in wp-includes/pluggable.php */
+            $uid = apply_filters( 'nonce_user_logged_out', $uid, $action );
+        }
+    
+        $token = wp_get_session_token();
+        $i = wp_nonce_tick();
+    
+        return substr( wp_hash( $i . '|' . $action . '|' . $uid . '|' . $token, 'nonce' ), -12, 10 );
     }
 
     /**
